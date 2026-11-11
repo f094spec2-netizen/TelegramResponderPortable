@@ -1,0 +1,13 @@
+.env
+.state/
+.venv/
+logs/
+build/
+dist/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.session
+*.session-journal
+*.log
+AGENTS.md

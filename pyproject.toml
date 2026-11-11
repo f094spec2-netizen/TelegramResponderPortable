@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "telegram-test-responder"
+version = "0.1.0"
+description = "Allowlisted Telegram MTProto responder for isolated bot testing"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "python-dotenv>=1.0,<2",
+  "telethon>=1.45,<2",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pyinstaller>=6.22,<7",
+  "pytest>=8,<10",
+  "ruff>=0.14,<1",
+]
+
+[project.scripts]
+telegram-test-responder = "telegram_test_responder.cli:main"
+telegram-test-responder-gui = "telegram_test_responder.gui:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/telegram_test_responder"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+allowed-confusables = ["；", "（", "）", "：", "，", "～"]
